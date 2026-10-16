@@ -1,0 +1,117 @@
+{
+    "plink - distance - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist.id:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "3": [
+                    [
+                        "PLINK_DISTANCE",
+                        "plink",
+                        "1.90b6.21"
+                    ]
+                ],
+                "log": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.log:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "mdist": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "mdist_id": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist.id:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions_plink": [
+                    [
+                        "PLINK_DISTANCE",
+                        "plink",
+                        "1.90b6.21"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-10-16T12:14:48.756397577",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    },
+    "plink - distance - square 1-ibs": {
+        "content": [
+            {
+                "log": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.log"
+                    ]
+                ],
+                "mdist": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist:md5,547598099419cddf2bb47082df73317e"
+                    ]
+                ],
+                "mdist_id": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.mdist.id:md5,4f9aa36c44a417ff6d7caa9841e66ad9"
+                    ]
+                ],
+                "versions_plink": [
+                    [
+                        "PLINK_DISTANCE",
+                        "plink",
+                        "1.90b6.21"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-10-16T12:14:15.441069047",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

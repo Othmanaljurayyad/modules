@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: plink_distance
+description: Pairwise genetic distance matrix between samples with PLINK 1.9 (--distance). Default is the square 1-IBS matrix.
+keywords:
+  - distance
+  - ibs
+  - plink
+  - population structure
+  - genomics
+tools:
+  - plink:
+      description: Whole genome association analysis toolset, designed to perform a range of basic, large-scale analyses in a computationally efficient manner.
+      homepage: https://www.cog-genomics.org/plink
+      documentation: https://www.cog-genomics.org/plink/1.9/
+      licence: ["GPL"]
+      identifier: biotools:plink
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'test' ]`
+    - bed:
+        type: file
+        description: PLINK binary biallelic genotype table
+        pattern: "*.bed"
+    - bim:
+        type: file
+        description: PLINK extended MAP file
+        pattern: "*.bim"
+    - fam:
+        type: file
+        description: PLINK sample information file
+        pattern: "*.fam"
+output:
+  mdist:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.mdist":
+          type: file
+          description: Square distance matrix, one row per sample (default `--distance square 1-ibs`)
+          pattern: "*.mdist"
+  mdist_id:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.mdist.id":
+          type: file
+          description: Family and individual ID of each row of the distance matrix
+          pattern: "*.mdist.id"
+  log:
+    - - meta:
+          type: map
+          description: Groovy Map containing sample information
+      - "*.log":
+          type: file
+          description: PLINK log file
+          pattern: "*.log"
+  versions_plink:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - plink:
+          type: string
+          description: The name of the tool
+      - plink --version 2>&1 | sed 's/^PLINK v//;s/ .*//':
+          type: eval
+          description: The expression to obtain the version of PLINK
+authors:
+  - "@Othmanaljurayyad"
+maintainers:
+  - "@Othmanaljurayyad"
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - plink:
+          type: string
+          description: The name of the tool
+      - plink --version 2>&1 | sed 's/^PLINK v//;s/ .*//':
+          type: eval
+          description: The expression to obtain the version of PLINK

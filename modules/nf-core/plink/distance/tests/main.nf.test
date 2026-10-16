@@ -1,0 +1,62 @@
+nextflow_process {
+
+    name "Test Process PLINK_DISTANCE"
+    script "../main.nf"
+    process "PLINK_DISTANCE"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "plink"
+    tag "plink/distance"
+
+    test("plink - distance - square 1-ibs") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [id:'test'],
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.bed', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.bim', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.fam', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert path(process.out.mdist[0][1]).exists() },
+                { assert path(process.out.mdist_id[0][1]).exists() },
+                { assert path(process.out.mdist[0][1]).readLines().size() == 200 },
+                { assert path(process.out.mdist_id[0][1]).readLines().size() == 200 },
+                { assert path(process.out.log[0][1]).exists() },
+                { assert snapshot(sanitizeOutput(process.out, unstableKeys: ["log"])).match() }
+            )
+        }
+    }
+
+    test("plink - distance - stub") {
+        options "-stub"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [id:'test'],
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.bed', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.bim', checkIfExists: true),
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/popgen/plink_simulated.fam', checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}
